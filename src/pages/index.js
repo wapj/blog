@@ -1,7 +1,8 @@
 import React from "react"
+import Layout from "../components/layout"
 
 export default () => (
-  <div style={{ margin: `3rem auto`, maxWidth: 600 }}>
+  <Layout menu="home">
     <h1>fake it till you make it</h1>
     <p>이번에는 진짜로 만든다~</p>
     <p>
@@ -9,5 +10,5 @@ export default () => (
       한글을 잘 사용할 수 있는 테마가 있으면 좋겠는데, 잘 모르겠다.
     </p>
     <img src="https://source.unsplash.com/random/400x200" alt="" />
-  </div>
+  </Layout>
 )
