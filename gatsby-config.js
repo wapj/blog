@@ -5,8 +5,12 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `승귤입니다`,
+  },
   plugins: [
+    `gatsby-plugin-emotion`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
