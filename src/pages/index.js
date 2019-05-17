@@ -1,20 +1,71 @@
 import React from "react"
+import { css } from "@emotion/core"
+import { Link, graphql } from "gatsby"
+import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
 
-export default () => (
-  <Layout menu="home">
-    <h1>fake it till you make it</h1>
-    <p>이번에는 진짜로 만든다~</p>
-    <p>
-      typography.js 의 테마는 github 테마를 사용했음. 한글을 잘 사용할 수 있는
-      테마가 있으면 좋겠는데, 잘 모르겠다.
-      <br />
-      2019.05.14 <br />
-      현재 활성화 된 메뉴에 대한 로직을 중복을 쓰지 않고 빼내서 기분이 좋다.
-      data가 뭐냐? <br />
-      React Component 밖에서 살 고 있는 애들은 모두 데이터다. (근엄, 진지) 관계
-      없긴한데, emotion 플러그인 굉장히 강력하고 좋네
-    </p>
-    <img src="https://source.unsplash.com/random/400x200" alt="" />
-  </Layout>
-)
+export default ({ data }) => {
+  return (
+    <Layout menu="home">
+      <div>
+        <h1
+          css={css`
+            display: inline-block;
+            border-bottom: 1px solid;
+          `}
+        >
+          아이티 노동자 블로그
+        </h1>
+        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <div key={node.id}>
+            <Link
+              to={node.fields.slug}
+              css={css`
+                text-decoration: none;
+                color: inherit;
+              `}
+            >
+              <h3
+                css={css`
+                  margin-bottom: ${rhythm(1 / 4)};
+                `}
+              >
+                {node.frontmatter.title}
+                <span
+                  css={css`
+                    color: #bbb;
+                  `}
+                >
+                  - {node.frontmatter.date}
+                </span>
+              </h3>
+              <p>{node.excerpt}</p>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "YYYY.MM.DD")
+          }
+          fields {
+            slug
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`

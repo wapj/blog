@@ -39,7 +39,7 @@ export default ({ menu = "", children }) => {
       css={css`
         margin: 0 auto;
         max-width: 700px;
-        padding: ${rhythm(2)};
+        padding: ${rhythm(1)};
         padding-top: ${rhythm(1.5)};
       `}
     >
@@ -68,9 +68,6 @@ export default ({ menu = "", children }) => {
           </ListLink>
           <ListLink to="/about" menu={menu}>
             About
-          </ListLink>
-          <ListLink to="/blog" menu={menu}>
-            Blog
           </ListLink>
         </ul>
       </header>
