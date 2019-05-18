@@ -3,7 +3,7 @@ title: "개츠비로 코드하이라이팅하기"
 date: "2019-05-15"
 ---
 
-## gatsby-remark-prismjs 를 써야된다고 함
+`gatsby-remark-prismjs` 를 써야된다고 함
 
 ### 설치
 

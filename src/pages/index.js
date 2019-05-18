@@ -14,7 +14,7 @@ export default ({ data }) => {
             border-bottom: 1px solid;
           `}
         >
-          아이티 노동자 블로그
+          Fake it till you make it
         </h1>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
@@ -32,14 +32,14 @@ export default ({ data }) => {
                 `}
               >
                 {node.frontmatter.title}
-                <span
-                  css={css`
-                    color: #bbb;
-                  `}
-                >
-                  - {node.frontmatter.date}
-                </span>
               </h3>
+              <span
+                css={css`
+                  color: #bbb;
+                `}
+              >
+                {node.frontmatter.date}
+              </span>
               <p>{node.excerpt}</p>
             </Link>
           </div>
