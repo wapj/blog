@@ -57,7 +57,7 @@ require("prismjs/themes/prism-solarizedlight.css")
 
 언어설정은 \`\`\`{language} 형태로 적어준다.
 
-````markdown
+````
 ```javascript
 plugins: [
   {

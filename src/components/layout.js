@@ -2,6 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
+import Header from "./header"
 import Footer from "./footer"
 
 const ListLink = props => {
@@ -21,7 +22,7 @@ const ListLink = props => {
   )
 }
 
-export default ({ menu = "", children }) => {
+export default ({ menu = "", title = "", children }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -34,6 +35,8 @@ export default ({ menu = "", children }) => {
     `
   )
 
+  title = title === "" ? data.site.siteMetadata.title : title
+
   return (
     <div
       css={css`
@@ -43,6 +46,7 @@ export default ({ menu = "", children }) => {
         padding-top: ${rhythm(1.5)};
       `}
     >
+      <Header title={title} />
       <header
         css={css`
           margin-bottom: ${rhythm(1.5)};
