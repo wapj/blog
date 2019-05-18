@@ -49,7 +49,7 @@ module.exports = {
         respectDNT: true,
         exclude: ["/preview/**", "/do-not-track/me/too/"],
         // Enables Google Optimize using your container Id
-        optimizeId: "GTM-M6GCRCV'",
+        optimizeId: "GTM-M6GCRCV",
         // Enables Google Optimize Experiment ID
         //experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
         // Set Variation ID. 0 for original 1,2,3....
