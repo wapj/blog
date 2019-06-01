@@ -35,9 +35,9 @@ $ pypy3 -m pip install ipykernel
 $ ipython kernel install --user --name=pypy3
 ```
 
-이게 끝이다. 
+위의 코드를 실행하면 뭔가 많이 설치를 하게된다. 
 
-아래의 사진과 같이 나오게 된다. 
+jupyter 노트북에서 아래의 사진과 같이 pypy3 설정이 추가가 되어 나오면 성공이다.
 
 ![img1](../../images/20190601/img1.png)
 
