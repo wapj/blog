@@ -41,7 +41,7 @@ export default ({ menu = "", title = "", children }) => {
     <div
       css={css`
         margin: 0 auto;
-        max-width: 700px;
+        max-width: 900px;
         padding: ${rhythm(1)};
         padding-top: ${rhythm(1.5)};
       `}
