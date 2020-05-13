@@ -1,6 +1,6 @@
 ---
 title: "jupyter notebook 에서 pdf 만들기"
-date: "2020-01-29"
+date: "2020-05-13"
 tags: "jupyter notebook"
 ---
 
