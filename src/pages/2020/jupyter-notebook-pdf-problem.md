@@ -46,5 +46,11 @@ mac은 `MecTeX` 라는것을 설치하면 된다.
 
 [링크](http://tug.org/cgi-bin/mactex-download/MacTeX.pkg)를 눌러서 패키지를 다운받아서 설치하자. (참고로 굉장히 오래걸린다)
 
+MacTex를 설치하자. (pdf 변환하려고 이걸 설치해야하는건 좀 과한거 아닌가라는 생각이 들기시작했다.) 
 
+nbconvert 도 설치해야하는 것 같으니 이것도 설치해주자. 
+
+```
+pip install nbconvert
+```
 
