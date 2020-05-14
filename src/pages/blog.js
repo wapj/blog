@@ -32,6 +32,7 @@ export default ({ data }) => {
               >
                 -{node.frontmatter.date}
               </span>
+              {node.frontmatter.tags}
             </h3>
             <p>{node.excerpt}</p>
           </div>

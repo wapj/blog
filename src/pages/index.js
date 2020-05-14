@@ -5,6 +5,8 @@ import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
 
 export default ({ data }) => {
+  const blogTitles = [`Fake it till you make it`, "Focus on just one thing"]
+  const idx = parseInt(Math.random() * blogTitles.length)
   return (
     <Layout menu="home">
       <div>
@@ -14,7 +16,7 @@ export default ({ data }) => {
             border-bottom: 1px solid;
           `}
         >
-          Fake it till you make it
+          {blogTitles[idx]}
         </h1>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
@@ -40,6 +42,8 @@ export default ({ data }) => {
               >
                 {node.frontmatter.date}
               </span>
+              <br />
+              tags : {node.frontmatter.tags}
               <p>{node.excerpt}</p>
             </Link>
           </div>
@@ -59,6 +63,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD")
+            tags
           }
           fields {
             slug
