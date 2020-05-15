@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { css } from "@emotion/core"
 import { Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
@@ -6,7 +6,11 @@ import Layout from "../components/layout"
 
 export default ({ data }) => {
   const blogTitles = [`Fake it till you make it`, "Focus on just one thing"]
-  const idx = parseInt(Math.random() * blogTitles.length)
+  const [state, _] = useState(() => {
+    const initial = parseInt(Math.random() * blogTitles.length)
+    return initial
+  })
+
   return (
     <Layout menu="home">
       <div>
@@ -16,7 +20,7 @@ export default ({ data }) => {
             border-bottom: 1px solid;
           `}
         >
-          {blogTitles[idx]}
+          {blogTitles[state]}
         </h1>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
