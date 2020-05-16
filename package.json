@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "gatsby-gyus-blog",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "개츠비 블로그 스타터",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
