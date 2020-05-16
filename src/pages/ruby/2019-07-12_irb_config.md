@@ -1,7 +1,9 @@
 ---
 title: "[TIL] irb 자동완성 설정 irb가 실행할때 자동으로 설정되게 하기"
 date: "2019-07-12"
-tags: ["TIL, RUBY"]
+tags: ["TIL", "RUBY"]
+category: "dev"
+published: true
 ---
 
 `~/.irbrc` 파일을 만든다. (`touch ~/.irbrc`)

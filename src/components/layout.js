@@ -70,6 +70,12 @@ export default ({ menu = "", title = "", children }) => {
           <ListLink to="/" menu={menu}>
             Home
           </ListLink>
+          <ListLink to="/dev" menu={menu}>
+            Dev
+          </ListLink>
+          <ListLink to="/diary" menu={menu}>
+            Diary
+          </ListLink>
           <ListLink to="/tags" menu={menu}>
             Tags
           </ListLink>

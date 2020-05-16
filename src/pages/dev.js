@@ -7,7 +7,7 @@ import title from "../components/title"
 
 export default ({ data }) => {
   return (
-    <Layout menu="home">
+    <Layout menu="dev">
       <div>
         <h1
           css={css`
@@ -53,25 +53,24 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  {
+  query {
     allMarkdownRemark(
-      filter: { frontmatter: { published: { eq: true } } }
+      filter: { frontmatter: { category: { eq: "dev" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       totalCount
       edges {
         node {
           id
-          fields {
-            slug
-          }
-          excerpt
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD")
             tags
-            category
           }
+          fields {
+            slug
+          }
+          excerpt
         }
       }
     }
