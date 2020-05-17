@@ -22,13 +22,16 @@ export default ({ data }) => (
 )
 
 export const query = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(limit: 2000) {
+    allMarkdownRemark(
+      limit: 2000
+      filter: { fields: {}, frontmatter: { published: { eq: true } } }
+    ) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

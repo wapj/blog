@@ -55,7 +55,9 @@ export default ({ data }) => {
 export const query = graphql`
   query {
     allMarkdownRemark(
-      filter: { frontmatter: { category: { eq: "diary" } } }
+      filter: {
+        frontmatter: { category: { eq: "diary" }, published: { eq: true } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       totalCount
