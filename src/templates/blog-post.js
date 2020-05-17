@@ -10,7 +10,7 @@ export default ({ data, pageContext }) => {
 
   return (
     <Layout menu="blog" title={post.frontmatter.title}>
-      <div>
+      <div style={{ clear: "both" }}>
         <h1>{title}</h1>
         <p>
           <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />

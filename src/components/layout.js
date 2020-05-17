@@ -13,7 +13,6 @@ const ListLink = props => {
   return (
     <li
       style={{
-        display: `inline-block`,
         marginRight: `1rem`,
         display: mq[0] && isHideOnMobile ? "none" : "inline-block",
       }}

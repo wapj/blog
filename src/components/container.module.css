@@ -10,3 +10,19 @@
 pre[class*="language-"] {
   background: #002a4f;
 }
+
+h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+li {
+  font-size: 0.9rem;
+}
