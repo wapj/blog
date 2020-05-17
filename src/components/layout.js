@@ -7,8 +7,17 @@ import Footer from "./footer"
 
 const ListLink = props => {
   const isActiveMenu = props.menu.toLowerCase() === props.children.toLowerCase()
+  const isHideOnMobile = props.isHideOnMobile || false
+  const breakpoints = [576, 768, 992, 1200]
+  const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
   return (
-    <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+    <li
+      style={{
+        display: `inline-block`,
+        marginRight: `1rem`,
+        display: mq[0] && isHideOnMobile ? "none" : "inline-block",
+      }}
+    >
       <Link
         to={props.to}
         style={{
@@ -67,7 +76,7 @@ export default ({ menu = "", title = "", children }) => {
       float: right;
       `}
         >
-          <ListLink to="/" menu={menu}>
+          <ListLink to="/" menu={menu} isHideOnMobile="true">
             Home
           </ListLink>
           <ListLink to="/dev" menu={menu}>
