@@ -2,7 +2,6 @@ import React from "react"
 import { css } from "@emotion/core"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
-import Header from "./header"
 import Footer from "./footer"
 
 const ListLink = props => {
@@ -54,7 +53,6 @@ export default ({ menu = "", title = "", children }) => {
         padding-top: ${rhythm(1.5)};
       `}
     >
-      <Header title={title} />
       <header
         css={css`
           margin-bottom: ${rhythm(1.5)};

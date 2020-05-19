@@ -32,6 +32,15 @@ const SEO = ({ description, image: metaImage, title }) => {
 
   return (
     <Helmet>
+      <meta charSet="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+      ></meta>
+      <meta
+        name="google-site-verification"
+        content="DKf0uKbVabYGKz0sq8wWSyZz_1vtPx3Pey1ifAguz-E"
+      />
       <title>{title}</title>
       <link rel="canonical" href={url} />
       <meta name="description" content={description} />
