@@ -1,132 +1,57 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            keywords
-            siteUrl
-          }
+const SEO = ({ post }) => {
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          title
+          description
+          url
+          twitter
         }
       }
-    `
-  )
+    }
+  `)
 
-  const metaDescription = description || site.siteMetadata.description
-  const image =
-    metaImage && metaImage.src
-      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
-      : null
-  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
+  const defaults = data.site.siteMetadata
+
+  if (defaults.url === "" && typeof window !== "undefined") {
+    defaults.url = window.location.origin
+  }
+
+  if (defaults.url === "") {
+    console.error("Please set a url in your site metadata!")
+    return null
+  }
+
+  const title = post.title || defaults.title
+  const description = post.description || defaults.description
+  const url = new URL(post.path || "", defaults.url)
+  const image = post.image ? new URL(post.image, defaults.url) : false
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      link={
-        canonical
-          ? [
-              {
-                rel: "canonical",
-                href: canonical,
-              },
-            ]
-          : []
-      }
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          name: "keywords",
-          content: site.siteMetadata.keywords,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          metaImage
-            ? [
-                {
-                  property: "og:image",
-                  content: image,
-                },
-                {
-                  property: "og:image:width",
-                  content: metaImage.width,
-                },
-                {
-                  property: "og:image:height",
-                  content: metaImage.height,
-                },
-                {
-                  name: "twitter:card",
-                  content: "summary_large_image",
-                },
-              ]
-            : [
-                {
-                  name: "twitter:card",
-                  content: "summary",
-                },
-              ]
-        )
-        .concat(meta)}
-    />
+    <Helmet>
+      <title>{title}</title>
+      <link rel="canonical" href={url} />
+      <meta name="description" content={description} />
+      {image && <meta name="image" content={image} />}
+
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      {image && <meta property="og:image" content={image} />}
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content={defaults.twitter} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {image && <meta name="twitter:image" content={image} />}
+    </Helmet>
   )
-}
-
-SEO.defaultProps = {
-  lang: `kr`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    src: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-  }),
-  pathname: PropTypes.string,
 }
 
 export default SEO

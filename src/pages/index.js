@@ -4,10 +4,12 @@ import { Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
 import title from "../components/title"
+import SEO from "../components/seo"
 
 export default ({ data }) => {
   return (
     <Layout menu="home">
+      <SEO title="승귤의 개발이야기" />
       <div>
         <h1
           css={css`
@@ -66,6 +68,7 @@ export const query = graphql`
             slug
           }
           excerpt
+
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD")
