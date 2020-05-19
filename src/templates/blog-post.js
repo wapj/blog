@@ -2,16 +2,25 @@ import React from "react"
 
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 import Comment from "../components/comment"
 
 export default ({ data, pageContext }) => {
   const post = data.markdownRemark
   const title = post.frontmatter.title
+  const image = post.frontmatter.image
+    ? post.frontmatter.image.childImageSharp.resize
+    : null
   const html = post.html
   const { next, prev } = pageContext
 
   return (
     <Layout menu="blog" title={post.frontmatter.title}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+        image={image}
+      />
       <div style={{ clear: "both" }}>
         <h1>{title}</h1>
 
@@ -57,6 +66,15 @@ export const query = graphql`
         title
         tags
         category
+        image: featured {
+          childImageSharp {
+            resize(width: 1200) {
+              src
+              height
+              width
+            }
+          }
+        }
       }
     }
   }
