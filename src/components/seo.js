@@ -26,7 +26,6 @@ const SEO = ({ description, image: metaImage, title }) => {
     console.error("Please set a url in your site metadata!")
     return null
   }
-  console.log("=========================================")
 
   const url = window.location.href
   const image = metaImage ? new URL(metaImage, defaults.url) : false
