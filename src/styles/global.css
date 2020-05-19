@@ -2,7 +2,6 @@ html {
   background-color: rgb(96.5%, 97.3%, 98%);
 }
 
-
 body {
   text-shadow: 0 0 0.1px rgba(0, 0, 0, 0.3);
   -webkit-text-size-adjust: antialiased;
@@ -10,4 +9,38 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
+}
+
+:not(pre) > code[class*="language-"] {
+  background: #345d82;
+}
+
+pre[class*="language-"] {
+  background: #002a4f;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+li {
+  font-size: 0.9rem;
+}
+
+.gatsby-highlight-code-line {
+  background-color: #45689c;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
 }

@@ -2,27 +2,3 @@
   margin: 3rem auto;
   max-width: 600px;
 }
-
-:not(pre) > code[class*="language-"] {
-  background: #345d82;
-}
-
-pre[class*="language-"] {
-  background: #002a4f;
-}
-
-h1 {
-  font-size: 1.6rem;
-}
-
-h2 {
-  font-size: 1.3rem;
-}
-
-h3 {
-  font-size: 1.1rem;
-}
-
-li {
-  font-size: 0.9rem;
-}

@@ -257,12 +257,61 @@ $ create_page.sh <파일명> <카테고리>
 파일명은 또한 slug로 사용될 타이틀명이기도 하다.
 드래프트 기능을 자주 쓰게 된다면, 커밋할때 날짜를 자동으로 업데이트 해주는 것도 괜찮을 것 같다.
 
+## 코멘트를 추가했다
+
+`utterances`라는 깃헙과 연동해서 코멘트를 달 수 있도록 해주는 녀석인데, 컨셉이 마음에 들었다.
+나의 블로그에는 99.9% 개발자만 들어올 것이기 때문에 github 계정은 하나쯤은 다들 있으실것 같다.
+없으면 [하나만드세요~](https://github.com)
+
+하는 법을 찾아보니 뭔가 복잡하게 정리해둔 문서가 많았는데 3가지만 하면 된다.
+
+1. [github.com/apps/utterances](https://github.com/apps/utterances)에 들어가서 utterance 앱에 코멘트 쓰기 권한주기.
+
+2. react를 쓸거라서 script 태그 못쓰니 아래와 같은 컴포넌트 만들기. 파일명은 `comment.js` 로 했다.
+
+```javascript
+import React, { Component } from "react"
+
+export default class Comments extends Component {
+  componentDidMount() {
+    let script = document.createElement("script")
+    let anchor = document.getElementById("inject-comments-for-uterances")
+    script.setAttribute("src", "https://utteranc.es/client.js")
+    script.setAttribute("crossorigin", "anonymous")
+    script.setAttribute("async", true)
+    script.setAttribute("repo", "[레파지토리]")
+    script.setAttribute("issue-term", "pathname")
+    script.setAttribute("theme", "github-light")
+    anchor.appendChild(script)
+  }
+
+  render() {
+    return <div id="inject-comments-for-uterances"></div>
+  }
+}
+```
+
+3. 레이아웃에 붙이기
+
+```javascript{7}
+import Comment from "../components/comment"
+
+export default ({ data, pageContext }) => {
+<Layout>
+  ... 중략
+  <div>
+    <Comment></Comment> /*바로 여기*/
+  </div>
+</Layout>
+});
+```
+
+저렇게 하고나서 잘나오는지 보면 한번 더 인증하는 부분이 나오는데, 승인을 눌러주면 끝이다.
+
+## 소셜 공유 기능
+
 ## 앞으로 남은것
 
 - 많은 부분을 수정하긴 했는데, TOC가 링크는 있지만, 동작을 하지 않는 상황이다. 이부분은 `MDX` 라는 것을 적용하면 해결할 수 있을 것 같다.
 
-- 글도 별로 없는데, 코멘트를 남길 사람이 있을지 모르겠으나, 나중을 위해서라도 코멘트를 달 수 있도록 하는 것은 필요한 것 같다. ![갯츠비 문서](https://www.gatsbyjs.org/docs/adding-comments/) 를 참고하여 진행할 예정이다. 디스커스나 gitalk를 붙여볼 예정이다.
-
 - favicon 추가하기 : 다른 사람들은 파비콘도 좀 멋지던데, 나는 그냥 개츠비가 만들어준거 쓰고 있다. 이쁜걸로 조만간 바꿀 것이다.
-
-> P.S 댓글이 있었다면, 다른 부족한 부분을 피드백을 받을 수 있지 않았을까 생각해보게 된다.
