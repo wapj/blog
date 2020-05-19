@@ -2,7 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ post }) => {
+const SEO = ({ description, image: metaImage, title }) => {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -26,11 +26,10 @@ const SEO = ({ post }) => {
     console.error("Please set a url in your site metadata!")
     return null
   }
+  console.log("=========================================")
 
-  const title = post.title || defaults.title
-  const description = post.description || defaults.description
-  const url = new URL(post.path || "", defaults.url)
-  const image = post.image ? new URL(post.image, defaults.url) : false
+  const url = window.location.href
+  const image = metaImage ? new URL(metaImage, defaults.url) : false
 
   return (
     <Helmet>
@@ -45,7 +44,7 @@ const SEO = ({ post }) => {
       <meta property="og:description" content={description} />
       {image && <meta property="og:image" content={image} />}
 
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={defaults.twitter} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

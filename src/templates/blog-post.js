@@ -13,7 +13,7 @@ export default ({ data, pageContext }) => {
 
   return (
     <Layout menu="blog" title={post.frontmatter.title}>
-      <SEO post={{ ...post, image: post.frontmatter.image || false }} />
+      <SEO title={post.frontmatter.title} description={post.excerpt} />
       <div style={{ clear: "both" }}>
         <h1>{title}</h1>
 
@@ -50,6 +50,7 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      excerpt
       tableOfContents
       timeToRead
       frontmatter {
