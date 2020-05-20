@@ -9,11 +9,15 @@ export default ({ data, pageContext }) => {
   const post = data.markdownRemark
   const title = post.frontmatter.title
   const html = post.html
-  const { next, prev } = pageContext
+  const { slug, next, prev } = pageContext
 
   return (
     <Layout menu="blog" title={post.frontmatter.title}>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <SEO
+        path={slug}
+        title={post.frontmatter.title}
+        description={post.excerpt}
+      />
       <div style={{ clear: "both" }}>
         <h1>{title}</h1>
 

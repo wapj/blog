@@ -2,7 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, image: metaImage, title }) => {
+const SEO = ({ path, description, image: metaImage, title }) => {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -27,7 +27,7 @@ const SEO = ({ description, image: metaImage, title }) => {
     return null
   }
 
-  const url = window.location.href
+  const url = `https://blog.gyus.me${path}`
   const image = metaImage ? new URL(metaImage, defaults.url) : false
 
   return (

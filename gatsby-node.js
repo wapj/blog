@@ -26,6 +26,10 @@ exports.createPages = async ({ graphql, actions }) => {
       postsRemark: allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 2000
+        filter: {
+          fields: { slug: {} }
+          frontmatter: { published: { eq: true } }
+        }
       ) {
         totalCount
         edges {
