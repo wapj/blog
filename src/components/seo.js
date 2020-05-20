@@ -37,6 +37,13 @@ const SEO = ({ path, description, image: metaImage, title }) => {
         name="viewport"
         content="width=device-width, initial-scale=1"
       ></meta>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:creator" content={defaults.twitter} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:url" content={url} />
+      {image && <meta name="twitter:image" content={image} />}
+      <meta name="author" content="seungkyoo.park@gmail.com" />
       <meta
         name="google-site-verification"
         content="DKf0uKbVabYGKz0sq8wWSyZz_1vtPx3Pey1ifAguz-E"
@@ -51,14 +58,6 @@ const SEO = ({ path, description, image: metaImage, title }) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       {image && <meta property="og:image" content={image} />}
-
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:creator" content={defaults.twitter} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:url" content={url} />
-      {image && <meta name="twitter:image" content={image} />}
-      <meta name="author" content="seungkyoo.park@gmail.com" />
     </Helmet>
   )
 }
