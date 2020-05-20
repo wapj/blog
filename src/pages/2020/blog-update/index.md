@@ -309,20 +309,13 @@ export default ({ data, pageContext }) => {
 
 저렇게 하고나서 잘나오는지 보면 한번 더 인증하는 부분이 나오는데, 승인을 눌러주면 끝이다.
 
-## 소셜 공유 기능
-
-- [개츠비의 공식문서](https://www.gatsbyjs.org/tutorial/seo-and-social-sharing-cards-tutorial/) 를 참고하였다.
-- 생각보다 까다로웠던 작업이다.
-- 추가해야되는 코드가 많기도하고 버전이 바뀐건지 빌드시에 에러가 나기도하였다.
-- 단순하게는 helmet 에 메타정보 넣는 건데 뭔가 고려해야될 점이 많고 문서도 길엇다.
-- 일단 에러없이 돌아가게만 해두었다.
-- 하는 과정은 생각보다 복잡하니 궁금한 사람은 공식문서를 참고하도록 하자.
-
 ## 앞으로 남은것
 
 - TOC에 링크가 달려 있긴하지만, 동작을 하지 않는 상황이다. 이부분은 `MDX` 라는 것을 적용하면 해결할 수 있을 것 같다.
 
 - 검색붙이기 : [개츠비에 있는 문서](https://www.gatsbyjs.org/docs/adding-search-with-algolia/)를 참고하여 알골리아를 붙일 예정이다.
+
+- 소셜 공유 기능 : [개츠비의 공식문서](https://www.gatsbyjs.org/tutorial/seo-and-social-sharing-cards-tutorial/) 를 참고해서 달아두긴 했는데, 작동을 하지 않는 상태이다. 잘 동작하도록 수정해야겠다.
 
 - favicon 추가하기 : 다른 사람들은 파비콘도 좀 멋지던데, 나는 그냥 개츠비가 만들어준거 쓰고 있다. 이쁜걸로 조만간 바꿀 것이다.
 
