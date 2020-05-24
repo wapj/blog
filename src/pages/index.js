@@ -44,7 +44,11 @@ export default ({ data }) => {
                 {node.frontmatter.date}
               </span>
               <br />
-              tags : {node.frontmatter.tags}
+              tags :{" "}
+              {node.frontmatter.tags &&
+                node.frontmatter.tags.map((value, _) => {
+                  return `${value} `
+                })}
               <p>{node.excerpt}</p>
             </Link>
           </div>

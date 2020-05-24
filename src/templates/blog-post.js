@@ -21,6 +21,15 @@ export default ({ data, pageContext }) => {
       <div style={{ clear: "both" }}>
         <h1>{title}</h1>
 
+        <p>
+          {post.frontmatter.image && (
+            <img
+              src={post.frontmatter.image.childImageSharp.resize.src}
+              width="500px"
+            />
+          )}
+        </p>
+
         <h3>목차</h3>
 
         <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
@@ -63,7 +72,7 @@ export const query = graphql`
         category
         image: featured {
           childImageSharp {
-            resize(width: 1200) {
+            resize {
               src
               height
               width
