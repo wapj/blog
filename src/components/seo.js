@@ -2,7 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ path, description, image: metaImage, title }) => {
+export default ({ path, description, image: metaImage, title }) => {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -32,11 +32,7 @@ const SEO = ({ path, description, image: metaImage, title }) => {
 
   return (
     <Helmet>
-      <meta charSet="utf-8" />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-      ></meta>
+      <meta name="test" content="test" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:creator" content={defaults.twitter} />
@@ -61,5 +57,3 @@ const SEO = ({ path, description, image: metaImage, title }) => {
     </Helmet>
   )
 }
-
-export default SEO
