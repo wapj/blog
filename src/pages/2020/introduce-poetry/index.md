@@ -3,7 +3,7 @@ title: "파이썬 패키지 관리툴 poetry 소개"
 date: "2020-06-04"
 tags: ["python", "poetry"]
 category: "dev"
-published: false
+published: true
 ---
 
 ## poetry 소개
@@ -217,7 +217,141 @@ my-project-0.1.0.tar.gz
 my_project-0.1.0-py3-none-any.whl
 ```
 
-## PyPI 에 배포하기
+## 명령어들
+
+### new
+
+`new` 명령어로 새로운 프로젝트를 만들 수 있습니다.
+
+```
+poetry new my-site
+```
+
+위 명령어를 실행하면 아래와 같은 기본 디렉토리 구성을 만들어줍니다.
+
+```
+my-site
+├── pyproject.toml
+├── README.rst
+├── src
+│   └── my_site
+│       └── __init__.py
+└── tests
+    ├── __init__.py
+    └── test_my_site.py
+```
+
+### init
+
+`init` 커맨드는 `pyproject.toml` 파일을 인터렉티브 하게 만들 수 있도록 도와줍니다.
+
+```
+poetry init
+```
+
+### install
+
+`install` 커맨드는 현재 프로젝트의 `pyproject.toml` 파일을 읽어서 의존성 패키지를 설치해줍니다.
+`poetry.lock` 이 없으면 만들어주고 있으면 해당파일을 사용하게됩니다.
+
+```
+# 의존성 설치
+poetry install
+
+# 개발환경의 의존성은 빼고 설치
+poetry install --no-dev
+
+# -E 또는 --extras 로 추가 의존성을 설정가능
+poetry install --extras "mysql redis"
+poerty install -E mysql -E redis
+```
+
+### update
+
+의존성 패키지의 버전을 업데이트하고 `poetry.lock` 파일을 업데이트 합니다.
+
+```
+# 패키지 업데이트
+poerty update
+
+# 하나씩 지정해서 업데이트도 가능
+poetry update requests toml
+
+# 업데이트는 하지 않고 poetry.lock 만 업데이트
+poerty update --lock
+```
+
+### add
+
+패키지설정을 pyproject.toml 에 추가합니다.
+
+```
+poetry add django
+
+# 개발환경에서 필요한 패키지 설치
+poetry add pytest factory-boy --dev
+
+# 버전을 지정가능
+poetry add django@^3.0.0
+poetry add "django=3.0.0"
+
+# 최신버전을 설치
+poetry add django@latest
+
+# 깃 저장소에 있는 패키지 설치
+poetry add git+https://github.com/django/django.git
+
+# 깃 저장소의 패키지에서 브랜치를 지정
+poetry add git+https://github.com/django/django.git#stable/2.2.x
+
+# 로컬에 디렉토리의 파일로 설치하기
+poetry add ./my-package/
+poetry add ./my-package/dist/my-package-0.1.0.tar.gz
+poetry add ./my-package/dist/my-package-0.1.0.whl
+```
+
+### remove
+
+패키지 삭제
+
+```
+poetry remove flask
+
+# 개발환경 패키지 삭제
+poetry remove pytest
+```
+
+### show
+
+```
+# 설치된 모든 패키지를 보여준다.
+poetry show
+
+# 개발환경용 제외하고 보여준다.
+poetry show --no-dev
+
+# 특정패키지를 지정하면 상세내용을 보여줍니다.
+poetry show django
+
+# 최신 버전을 보여준다.
+poetry show --latest (-l)
+
+# 업데이트를 해야하는 패키지들을 보여준다.
+poetry show --outdate (-o)
+
+# 의존성 트리를 보여준다.
+poetry show --tree
+```
+
+### build
+
+위에도 적었지만 소스를 배포가능한 형태로(tarball, wheel)빌드합니다.
+
+```
+poetry build
+```
+
+### publish
 
 아래 명령어로 PyPI에 배포할 수 있습니다.
 
@@ -229,37 +363,57 @@ poerty publish
 계정이 없다면 [여기를 클릭](https://pypi.org/account/register/) 하시고 하나 만드셔도 좋습니다.
 프로젝트명이 겹치면 배포를 할 수 없으니, 자신만의 독특한 프로젝트 명을 정해서 배포를 해보도록 합시다.
 
-## 명령어들
-
-### init
-
-`init` 커맨드는 `pyproject.toml` 파일을 인터렉티브 하게 만들 수 있도록 도와줍니다.
-
-### install
-
-### update
-
-### add
-
-### remove
-
-### show
-
-### build
-
 ### config
+
+`config` 커맨드로 poetry 관련 설정을 변경할 수 있습니다.
+
+```
+# 설정보기
+poetry config --list
+
+
+# 설정법
+poetry config [options] [setting-key] [setting-value1] ... [setting-valueN]
+```
 
 ### run
 
-### shell
+프로젝트의 virtualenv 에 커맨드를 전달하여 실행하게 됩니다.
+
+```
+poetry run python -V
+```
 
 ### check
 
+`pyproject.toml` 의 유효함을 체크하는 명령어입니다.
+
 ### search
+
+패키지를 찾기위한 커맨드입니다.
+예를들어 beautifulsoup 의 패키지명의 철자가 기억이 안나고 beautiful 만 기억나면
+아래와 같이 할 수 있습니다 .
+
+```
+$ poetry search beautiful | grep soup
+
+---------------------------------
+# output
+beautifulsoup (3.2.2)
+beautifulsoup4 (4.9.1)
+```
 
 ### lock
 
+`pyproject.toml` 에 설정된 의존성들에 대한 lock 파일을 생성합니다. (설치X)
+
 ### export
+
+export 명령어는 lock 파일을 사용해서 다른 의존성 포맷으로 변경할 수 있습니다.
+
+```
+poetry export -f requirements.txt > requirements.txt
+```
 
 ## 가상 환경 관리하기
 
@@ -317,3 +471,22 @@ $ poetry env list
 ```bash
 $ poetry env remove {python경로}
 ```
+
+## 마무리
+
+파이썬은 nodejs, ruby 보다는 상대적으로 프로젝트 환경 관리가 용이하지 않다고 느낀적이 많이 있는데,
+`poetry` 는 기존에 사용하던 pyenv, virtualenv를 추가적인 연동 작업없이 자연스럽게 사용할 수 있게 해줍니다.
+거기다 패키징과 배포를 쉽게 할 수 있도록 커맨드를 만들어 둔 점이 좋다고 생각합니다.
+
+나온지 오래되지 않은 툴이기에 기존에 사용하던 프로젝트에 적용시에는 조심히 적용해야하겠지만,
+새로만드는 프로젝트라면 과감히 적용해보는 것은 어떨까요?!
+
+pipenv, pyenv, virutalenv 등등 많은 버전관리, 패키지 관리 툴들을 사용해보았지만,
+파이썬에서 앞으로의 프로젝트 및 패키지 관리는 `poetry` 를 사용하는 사람들이 많아질 것 같습니다.
+
+부족한 글이지만, `poetry` 사용에 도움이 되었으면 좋겠습니다.
+
+## 참고
+
+- [poetry 공식사이트](https://python-poetry.org/)
+- [파이썬 의존성 관리자 Poetry 사용기](https://spoqa.github.io/2019/08/09/brand-new-python-dependency-manager-poetry.html)
