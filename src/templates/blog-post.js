@@ -11,9 +11,16 @@ export default ({ data, pageContext }) => {
   const html = post.html;
   const { slug, next, prev } = pageContext;
 
+  console.log(post.frontmatter.image?.childImageSharp?.resize.src);
+
   return (
     <Layout menu="blog" title={post.frontmatter.title}>
-      <SEO path={slug} title={post.frontmatter.title} description={post.excerpt} />
+      <SEO
+        path={slug}
+        title={post.frontmatter.title}
+        image={post.frontmatter.image?.childImageSharp?.resize.src}
+        description={post.excerpt}
+      />
       <div style={{ clear: "both" }}>
         <h1>{title}</h1>
 

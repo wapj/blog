@@ -9,7 +9,7 @@ const SEO = ({ title, description, image, article }) => {
   const { site } = useStaticQuery(query);
 
   const { defaultTitle, titleTemplate, defaultDescription, siteUrl, defaultImage, twitterUsername } = site.siteMetadata;
-
+  const img = image == "null" || !image ? defaultImage : image;
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
@@ -17,8 +17,14 @@ const SEO = ({ title, description, image, article }) => {
     url: `${siteUrl}${pathname}`,
   };
 
+  console.log(seo);
+
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      <meta charSet="utf-8" />
+      <title>{title}</title>
+      <link rel="canonical" href="https://blog.gyus.me" />
+      <meta name="google-site-verification" content="DKf0uKbVabYGKz0sq8wWSyZz_1vtPx3Pey1ifAguz-E" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       {seo.url && <meta property="og:url" content={seo.url} />}
