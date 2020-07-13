@@ -19,10 +19,6 @@ export default ({ data, pageContext }) => {
 
         <p>{post.frontmatter.image && <img src={post.frontmatter.image.childImageSharp.resize.src} width="500px" />}</p>
 
-        <h3>목차</h3>
-
-        <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
-
         <div dangerouslySetInnerHTML={{ __html: html }} />
 
         <hr></hr>
