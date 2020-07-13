@@ -1,14 +1,15 @@
-import React from "react"
-import { css } from "@emotion/core"
-import { useStaticQuery, Link, graphql } from "gatsby"
-import { rhythm } from "../utils/typography"
-import Footer from "./footer"
+import React from "react";
+import { css } from "@emotion/core";
+import { useStaticQuery, Link, graphql } from "gatsby";
+import { rhythm } from "../utils/typography";
+import Footer from "./footer";
+import SEO from "./seo";
 
 const ListLink = props => {
-  const isActiveMenu = props.menu.toLowerCase() === props.children.toLowerCase()
-  const isHideOnMobile = props.isHideOnMobile || false
-  const breakpoints = [576, 768, 992, 1200]
-  const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
+  const isActiveMenu = props.menu.toLowerCase() === props.children.toLowerCase();
+  const isHideOnMobile = props.isHideOnMobile || false;
+  const breakpoints = [576, 768, 992, 1200];
+  const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`);
   return (
     <li
       style={{
@@ -26,8 +27,8 @@ const ListLink = props => {
         {props.children}
       </Link>
     </li>
-  )
-}
+  );
+};
 
 export default ({ menu = "", title = "", children }) => {
   const data = useStaticQuery(
@@ -39,10 +40,10 @@ export default ({ menu = "", title = "", children }) => {
           }
         }
       }
-    `
-  )
+    `,
+  );
 
-  title = title === "" ? data.site.siteMetadata.title : title
+  title = title === "" ? data.site.siteMetadata.title : title;
 
   return (
     <div
@@ -95,5 +96,5 @@ export default ({ menu = "", title = "", children }) => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
