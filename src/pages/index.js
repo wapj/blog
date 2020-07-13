@@ -1,15 +1,15 @@
-import React from "react"
-import { css } from "@emotion/core"
-import { Link, graphql } from "gatsby"
-import { rhythm } from "../utils/typography"
-import Layout from "../components/layout"
-import title from "../components/title"
-import SEO from "../components/seo"
+import React from "react";
+import { css } from "@emotion/core";
+import { Link, graphql } from "gatsby";
+import { rhythm } from "../utils/typography";
+import Layout from "../components/layout";
+import title from "../components/title";
+import SEO from "../components/seo";
 
 export default ({ data }) => {
   return (
     <Layout menu="home">
-      <SEO title="승귤의 개발이야기" />
+      <SEO title="승귤의 개발이야기" description="개발관련된 이야기가 올라옵니다." defaultImage="/image/gyus.png" />
       <div>
         <h1
           css={css`
@@ -47,7 +47,7 @@ export default ({ data }) => {
               tags :{" "}
               {node.frontmatter.tags &&
                 node.frontmatter.tags.map((value, _) => {
-                  return `${value} `
+                  return `${value} `;
                 })}
               <p>{node.excerpt}</p>
             </Link>
@@ -55,8 +55,8 @@ export default ({ data }) => {
         ))}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   {
@@ -83,4 +83,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

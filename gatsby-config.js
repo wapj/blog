@@ -14,7 +14,8 @@ module.exports = {
     author: "seungkyoo.park@gmail.com",
     description: "판교에 정착한 아이티노동자의 개발 잡설들이 올라옵니다.",
     image: "/images/seungkyoo.png",
-    twitter: "@wapj2000",
+    defaultImage: "/images/seungkyoo.png",
+    twitterUsername: "@wapj2000",
   },
   plugins: [
     `gatsby-plugin-emotion`,
@@ -47,8 +48,8 @@ module.exports = {
                 url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                 guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                 custom_elements: [{ "content:encoded": edge.node.html }],
-              })
-            })
+              });
+            });
           },
           query: `
             {
@@ -124,4 +125,4 @@ module.exports = {
       },
     },
   ],
-}
+};

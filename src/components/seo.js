@@ -1,59 +1,67 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useLocation } from "@reach/router";
+import { useStaticQuery, graphql } from "gatsby";
 
-export default ({ path, description, image: metaImage, title }) => {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          title
-          description
-          url
-          twitter
-        }
-      }
-    }
-  `)
+const SEO = ({ title, description, image, article }) => {
+  const { pathname } = useLocation();
+  const { site } = useStaticQuery(query);
 
-  const defaults = data.site.siteMetadata
+  const { defaultTitle, titleTemplate, defaultDescription, siteUrl, defaultImage, twitterUsername } = site.siteMetadata;
 
-  if (defaults.url === "" && typeof window !== "undefined") {
-    defaults.url = window.location.origin
-  }
-
-  if (defaults.url === "") {
-    console.error("Please set a url in your site metadata!")
-    return null
-  }
-
-  const url = `https://blog.gyus.me${path}`
-  const image = metaImage ? new URL(metaImage, defaults.url) : false
+  const seo = {
+    title: title || defaultTitle,
+    description: description || defaultDescription,
+    image: `${siteUrl}${image || defaultImage}`,
+    url: `${siteUrl}${pathname}`,
+  };
 
   return (
-    <Helmet>
-      <meta name="test" content="test" />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:creator" content={defaults.twitter} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:url" content={url} />
-      {image && <meta name="twitter:image" content={image} />}
-      <meta name="author" content="seungkyoo.park@gmail.com" />
-      <meta
-        name="google-site-verification"
-        content="DKf0uKbVabYGKz0sq8wWSyZz_1vtPx3Pey1ifAguz-E"
-      />
-      <title>{title}</title>
-      <link rel="canonical" href={url} />
-      <meta name="description" content={description} />
-      {image && <meta name="image" content={image} />}
-
-      <meta property="og:url" content={url} />
-      <meta property="og:type" content="article" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      {image && <meta property="og:image" content={image} />}
+    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      <meta name="description" content={seo.description} />
+      <meta name="image" content={seo.image} />
+      {seo.url && <meta property="og:url" content={seo.url} />}
+      {(article ? true : null) && <meta property="og:type" content="article" />}
+      {seo.title && <meta property="og:title" content={seo.title} />}
+      {seo.description && <meta property="og:description" content={seo.description} />}
+      {seo.image && <meta property="og:image" content={seo.image} />}
+      <meta name="twitter:card" content="summary_large_image" />
+      {twitterUsername && <meta name="twitter:creator" content={twitterUsername} />}
+      {seo.title && <meta name="twitter:title" content={seo.title} />}
+      {seo.description && <meta name="twitter:description" content={seo.description} />}
+      {seo.image && <meta name="twitter:image" content={seo.image} />}
     </Helmet>
-  )
-}
+  );
+};
+
+export default SEO;
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  article: PropTypes.bool,
+};
+
+SEO.defaultProps = {
+  title: null,
+  description: null,
+  image: null,
+  article: false,
+};
+
+const query = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl: url
+        defaultImage: image
+        twitterUsername
+      }
+    }
+  }
+`;
