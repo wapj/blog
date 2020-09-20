@@ -3,6 +3,7 @@ title: "파이썬에서 피보나치 수열을 만드는법 3가지 ( + 1 )"
 date: "2020-09-20"
 tags: ["python", "fibonacci"]
 category: "dev"
+featured: fibonacci.jpg
 published: true
 ---
 
