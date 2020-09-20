@@ -11,8 +11,6 @@ export default ({ data, pageContext }) => {
   const html = post.html;
   const { slug, next, prev } = pageContext;
 
-  console.log(post.frontmatter.image?.childImageSharp?.resize.src);
-
   return (
     <Layout menu="blog" title={post.frontmatter.title}>
       <SEO
@@ -23,8 +21,6 @@ export default ({ data, pageContext }) => {
       />
       <div style={{ clear: "both" }}>
         <h1>{title}</h1>
-
-        <p>{post.frontmatter.image && <img src={post.frontmatter.image.childImageSharp.resize.src} width="100%" />}</p>
 
         <div dangerouslySetInnerHTML={{ __html: html }} />
 

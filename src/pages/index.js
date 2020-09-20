@@ -29,6 +29,11 @@ export default ({ data }) => {
                 color: inherit;
               `}
             >
+              <p>
+                {node.frontmatter.image && (
+                  <img src={node.frontmatter.image.childImageSharp.resize.src} width="100%" alt="" />
+                )}
+              </p>
               <h3
                 css={css`
                   margin-bottom: ${rhythm(1 / 4)};

@@ -9,15 +9,13 @@ const SEO = ({ title, description, image, article }) => {
   const { site } = useStaticQuery(query);
 
   const { defaultTitle, titleTemplate, defaultDescription, siteUrl, defaultImage, twitterUsername } = site.siteMetadata;
-  const img = image == "null" || !image ? defaultImage : image;
+
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
   };
-
-  console.log(seo);
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
