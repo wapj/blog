@@ -5,6 +5,8 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Comment from "../components/comment";
 
+require(`gatsby-remark-mathjax-ssr/mathjax.css`);
+
 export default ({ data, pageContext }) => {
   const post = data.markdownRemark;
   const title = post.frontmatter.title;
