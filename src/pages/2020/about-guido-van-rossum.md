@@ -63,7 +63,7 @@ featured: images/guido-headshot-2019.jpg
 ![파이썬 번호판](https://gvanrossum.github.io/images/license.jpg)
 
 - Guido 에서 G는 쎄게 발음해야하는 G라고 합니다. 쥐 와 취의 중간발음으로 해야된다고 하네요.
-- Guido van RoSsum 에서 `van` 은 소문자로 적어야 한다고 합니다.
+- Guido van Rossum 에서 `van` 은 소문자로 적어야 한다고 합니다.
 - 파이썬 인터프리터에서 `license()` 라고 치면, 귀도 반 로썸이 파이썬을 연구했던 기관 이름들이 다 나옵니다. 0.9 버전부터 있네요~
 - 파이썬 인터프리터에서 `import antigravity` 를 치면 파이썬 만화가 나옵니다.
 - BDFL 이라는 말은 귀도 반 로썸에게서 부터 생겨난 말입니다.
