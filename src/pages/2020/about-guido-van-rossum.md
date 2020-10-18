@@ -1,5 +1,5 @@
 ---
-title: "파이썬 차시자귀도 반 로썸에 대하여"
+title: "파이썬 창시자 귀도 반 로썸에 대하여"
 date: "2020-10-18"
 category: "dev"
 published: true
