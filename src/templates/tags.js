@@ -71,6 +71,17 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            tags
+            category
+            image: featured {
+              childImageSharp {
+                resize {
+                  src
+                  height
+                  width
+                }
+              }
+            }
           }
         }
       }
