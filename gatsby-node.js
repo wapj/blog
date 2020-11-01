@@ -38,8 +38,18 @@ exports.createPages = async ({ graphql, actions }) => {
               slug
             }
             frontmatter {
-              tags
               title
+              tags
+              category
+              image: featured {
+                childImageSharp {
+                  resize {
+                    src
+                    height
+                    width
+                  }
+                }
+              }
             }
           }
         }

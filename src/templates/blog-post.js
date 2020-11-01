@@ -26,12 +26,12 @@ export default ({ data, pageContext }) => {
 
         <div dangerouslySetInnerHTML={{ __html: html }} />
 
-        <hr></hr>
-        <div style={{ marginBottom: "1rem", fontFamily: "avenir" }}>
-          {next && <Link to={next.fields.slug}>다음글: {`${next.frontmatter.title}`}</Link>}
-        </div>
+        <hr></hr>        
         <div style={{ fontFamily: "avenir" }}>
           {prev && <Link to={prev.fields.slug}>이전글: {`${prev.frontmatter.title}`}</Link>}
+        </div>
+        <div style={{ marginBottom: "1rem", fontFamily: "avenir" }}>
+          {next && <Link to={next.fields.slug}>다음글: {`${next.frontmatter.title}`}</Link>}
         </div>
       </div>
       <div>
