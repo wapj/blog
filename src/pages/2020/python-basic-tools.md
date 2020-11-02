@@ -35,7 +35,7 @@ pip freeze > requirements.txt
 
 unittest는 자바의 junit과 너무나 비슷한 인터페이스를 제공해서 기본적으로 작성해야 되는 코드들이 있습니다.
 
-아래와 같이 테스트를 위해서는 unittest.TestCase 를 상속받은 클래스를 만들어야하죠.
+아래와 같이 테스트를 위해서는 unittest.TestCase를 상속받은 클래스를 만들어야하죠.
 
 ```python
 class MyTest(unitteest.TestCase):
