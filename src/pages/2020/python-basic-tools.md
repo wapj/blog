@@ -33,7 +33,7 @@ pip freeze > requirements.txt
 
 패키지 매니저는 표준 라이브러리를 소개해 놓고, 테스팅에서는 unitest가 아닌 pytest 를 소개하는지 궁금하실 겁니다.
 
-unittest 은 자바의 junit 과 너무나 비슷한 인터페이스를 제공해서 기본적으로 작성해야 되는 코드들이 있습니다.
+unittest는 자바의 junit과 너무나 비슷한 인터페이스를 제공해서 기본적으로 작성해야 되는 코드들이 있습니다.
 
 아래와 같이 테스트를 위해서는 unittest.TestCase 를 상속받은 클래스를 만들어야하죠.
 
