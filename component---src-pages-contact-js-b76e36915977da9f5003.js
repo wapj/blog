@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{"Cuy+":function(n,o,t){"use strict";t.r(o);t("q1tI");var c=t("Bl7J"),e=t("qKvR");o.default=function(){return Object(e.b)(c.a,{menu:"contact"},Object(e.b)("h1",null,"연락할일은 없겠지만 뭐..."),Object(e.b)("p",null,Object(e.b)("a",{href:"mailto:seungkyoo.park@gmail.com"},"seungkyoo.park@gmail.com")))}}}]);
+//# sourceMappingURL=component---src-pages-contact-js-b76e36915977da9f5003.js.map

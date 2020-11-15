@@ -1,1 +1,0 @@
-{"componentChunkName":"component---src-templates-tags-js","path":"/tags/destructing/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/2020/get-subset-of-object/"},"frontmatter":{"title":"[TIL] 자바스크립트의 객체에서 일부만 떼서 다른 객체에 할당하기"}}}]}},"pageContext":{"tag":"destructing"}}}
